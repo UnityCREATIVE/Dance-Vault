@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#1e1030">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Warmland Dance 2026 Showcase · Dance Vault Programs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════
+   RESET & ROOT (DARK MODE DEFAULT)
+══════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #1e1030;
+  --bg2: #261840;
+  --bg3: #2e2050;
+  --gold: #c9a84c;
+  --gold-dim: #6a5420;
+  --gold-faint: #1a1008;
+  --border: #3a2a58;
+  --border-mid: #4a3a68;
+  --w100: #ffffff;
+  --w200: #e8e0d0;
+  --w300: #b8b0a0;
+  --header-bg: #000000;
+  --font: 'Jost', sans-serif;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+}
+
+/* ══════════════════════════════════════
+   LIGHT MODE VARIABLES
+══════════════════════════════════════ */
+html.light-mode {
+  --bg: #fdfcf9;
+  --bg2: #f2efe9;
+  --bg3: #e6e0d5;
+  --gold: #ad8c33; 
+  --gold-dim: #d4c49c;
+  --gold-faint: #faf6ea;
+  --border: #e0d8c8;
+  --border-mid: #c4b8a3;
+  --w100: #1a1025; 
+  --w200: #3a2a48;
+  --w300: #5c4b6a;
+  --header-bg: #11081a;
+}
+
+html { background: var(--bg); transition: background-color 0.3s ease; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--w100);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* ══════════════════════════════════════
+   HEADER
+══════════════════════════════════════ */
+.dvh {
+  background: var(--header-bg);
+  padding: calc(10px + var(--safe-top)) 16px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #111;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+.dvh-brand { display: flex; align-items: baseline; gap: 5px; }
+.dvh-dv { font-size: 11px; letter-spacing: 0.3em; color: #ffffff; font-weight: 600; }
+.dvh-sep { color: #444; font-size: 10px; }
+.dvh-prog { font-size: 10px; letter-spacing: 0.2em; color: var(--gold); font-weight: 300; }
+.dvh-right { display: flex; gap: 4px; }
+.dv-mbtn {
+  font-family: var(--font);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 0.5px solid #333;
+  background: var(--header-bg);
+  color: #777;
+  cursor: pointer;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  touch-action: manipulation;
+  transition: all 0.2s;
+}
+.dv-mbtn.on { border-color: var(--gold); color: var(--gold); }
+
+/* ══════════════════════════════════════
+   BANNER
+══════════════════════════════════════ */
+.dv-banner {
+  position: relative;
+  width: 100%;
+  height: clamp(160px, 40vw, 220px);
+  overflow: hidden;
+  background: var(--bg2);
+}
+.dv-banner img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+.dv-banner-fade {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 20%, var(--bg) 100%);
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════
+   EVENT INFO
+══════════════════════════════════════ */
+.dv-event {
+  padding: 14px 16px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+.dv-estudio {
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.dv-etitle {
+  font-size: clamp(22px, 6vw, 28px);
+  font-weight: 600;
+  color: var(--w100);
+  line-height: 1.1;
+  margin-bottom: 5px;
+}
+.dv-esub {
+  font-size: 11px;
+  color: var(--w200);
+  line-height: 1.7;
+}
+.dv-event-r {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+  text-align: right;
+}
+.dv-sval { font-size: 20px; font-weight: 600; color: var(--gold); line-height: 1; }
+.dv-slbl { font-size: 8px; letter-spacing: 0.18em; color: var(--w100); margin-top: 1px; font-weight: 400; }
+
+/* ══════════════════════════════════════
+   NAV
+══════════════════════════════════════ */
+.dv-nav {
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  position: sticky;
+  top: 44px;
+  z-index: 190;
+  transition: background-color 0.3s;
+}
+.dv-nav-row1 {
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.dv-nav-row1::-webkit-scrollbar { display: none; }
+.dv-nav-left { display: flex; flex-shrink: 0; }
+.dv-nav-right { flex-shrink: 0; }
+.dv-nav-row2 {
+  padding: 0 4px;
+  border-top: 0.5px solid var(--border);
+  display: none;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.dv-nav-row2::-webkit-scrollbar { display: none; }
+.dv-nav-row2.show { display: flex; }
+
+.dv-ptab, .dv-stab, .dv-srch {
+  all: unset;
+  font-family: var(--font) !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-block;
+  box-sizing: border-box;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.2s;
+}
+.dv-ptab {
+  font-size: 10px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.15em !important;
+  padding: 13px 12px 11px !important;
+  color: var(--w300) !important;
+}
+.dv-ptab:hover, .dv-ptab:active { color: var(--w200) !important; }
+.dv-ptab.on { color: var(--w100) !important; font-weight: 600 !important; }
+
+.dv-srch {
+  font-size: 10px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.15em !important;
+  padding: 13px 12px 11px !important;
+  color: var(--w300) !important;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 5px;
+}
+.dv-srch:hover, .dv-srch:active { color: var(--w200) !important; }
+.dv-srch.on { color: var(--w100) !important; font-weight: 600 !important; }
+.dv-srch svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; pointer-events: none; }
+
+.dv-stab {
+  font-size: 9px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.12em !important;
+  padding: 9px 10px 7px !important;
+  color: var(--w300) !important;
+}
+.dv-stab:hover, .dv-stab:active { color: var(--w200) !important; }
+.dv-stab.on { color: var(--w100) !important; font-weight: 600 !important; }
+
+/* ══════════════════════════════════════
+   PANELS
+══════════════════════════════════════ */
+.dv-panel { display: none; padding: 18px 16px 40px; }
+.dv-panel.show { display: block; }
+
+.dv-lbl {
+  font-size: 8px;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.dv-lbl::after { content: ''; flex: 1; height: 0.5px; background: var(--border); }
+
+/* ══════════════════════════════════════
+   HOME: WELCOME & CHIPS
+══════════════════════════════════════ */
+.dv-wtext {
+  font-size: 13px;
+  color: var(--w200);
+  line-height: 1.9;
+  margin-bottom: 22px;
+  font-style: italic;
+}
+
+.dv-acts-row {
+  display: flex;
+  gap: 0;
+  border: 0.5px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.dv-achip {
+  flex: 1;
+  padding: 14px 8px;
+  cursor: pointer;
+  border-right: 0.5px solid var(--border);
+  text-align: center;
+  transition: background 0.15s;
+  background: transparent;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.dv-achip:last-child { border-right: none; }
+.dv-achip:active { background: var(--bg2); }
+.dv-achip-sl { font-size: 18px; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 3px; }
+.dv-achip-lb { font-size: 9px; letter-spacing: 0.12em; color: var(--w200); font-weight: 500; }
+
+/* ══════════════════════════════════════
+   GALLERY
+══════════════════════════════════════ */
+.dv-gal-home {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: clamp(110px, 25vw, 160px) clamp(110px, 25vw, 160px);
+  gap: 3px;
+  margin-bottom: 22px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.dv-gal-home .ghi:first-child { grid-row: 1 / 3; }
+.ghi, .gmi {
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  background: var(--bg3);
+  -webkit-tap-highlight-color: transparent;
+}
+.ghi img, .gmi img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s; }
+.ghi:active img, .gmi:active img { transform: scale(1.04); }
+
+.dv-gal-media { columns: 2; gap: 3px; margin-bottom: 8px; }
+.gmi { break-inside: avoid; margin-bottom: 3px; border-radius: 2px; }
+
+/* ══════════════════════════════════════
+   STUDIO CONTACT GRID
+══════════════════════════════════════ */
+.dv-cgrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 0.5px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.dv-cc {
+  background: var(--bg2);
+  padding: 16px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 6px;
+  min-height: 100px;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s;
+}
+.dv-cc:active { background: var(--bg3); }
+.dv-cc-icon { color: var(--w300); }
+.dv-cc-icon svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.5; display: block; }
+.dv-cc-lbl { font-size: 8px; letter-spacing: 0.12em; color: var(--w100); font-weight: 600; }
+.dv-cc-val { font-size: 10px; color: var(--w200); line-height: 1.3; word-break: break-all; }
+
+/* ══════════════════════════════════════
+   ACTS PANEL
+══════════════════════════════════════ */
+.dv-act-body { display: none; padding-top: 14px; }
+.dv-act-body.show { display: block; }
+.dv-act-hd { margin-bottom: 14px; padding-bottom: 10px; border-bottom: 0.5px solid var(--border); }
+
+.dv-act-sl { font-size: 40px; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 2px; }
+.dv-act-nm { font-size: 18px; font-weight: 600; color: var(--w100); }
+
+.dv-row {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 8px;
+  padding: 14px 0;
+  border-bottom: 0.5px solid var(--border);
+  align-items: start;
+  transition: background 0.1s;
+}
+.dv-row:active { background: var(--bg2); }
+.dv-row-body { display: flex; justify-content: space-between; align-items: start; gap: 8px; }
+.dv-row-left { flex: 1; min-width: 0; }
+.dv-row-right { text-align: right; flex-shrink: 0; }
+.dv-rnum { font-size: 13px; font-weight: 400; color: var(--gold); padding-top: 1px; }
+.dv-rtitle { font-size: 13px; font-weight: 500; color: var(--w100); margin-bottom: 2px; line-height: 1.3; }
+.dv-rtitle mark { background: var(--gold-faint); color: var(--gold); border-radius: 2px; padding: 0 2px; }
+.dv-rclass { font-size: 11px; color: var(--w200); font-weight: 300; line-height: 1.4; }
+.dv-rchore { font-size: 10px; letter-spacing: 0.08em; color: var(--gold); font-weight: 500; text-transform: uppercase; margin-bottom: 2px; }
+.dv-rasst { font-size: 10px; color: var(--w200); font-weight: 300; }
+
+.dv-interm {
+  text-align: center;
+  padding: 13px;
+  margin: 8px 0;
+  border: 0.5px dashed var(--gold-dim);
+  border-radius: 4px;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  font-weight: 400;
+}
+
+/* ══════════════════════════════════════
+   SEARCH
+══════════════════════════════════════ */
+#p-search { padding: 18px 16px 40px; }
+.dv-sfield-wrap { position: relative; margin-bottom: 8px; }
+.dv-sfield,
+.dv-sfield:focus,
+.dv-sfield:active,
+.dv-sfield:hover {
+  all: unset !important;
+  display: block !important;
+  width: 100% !important;
+  background-color: var(--bg) !important;
+  color: var(--w100) !important;
+  font-family: var(--font) !important;
+  font-size: 14px !important;
+  padding: 12px 0 12px 26px !important;
+  border: none !important;
+  border-bottom: 1px solid var(--border-mid) !important;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-sizing: border-box !important;
+  caret-color: var(--gold) !important;
+  -webkit-text-fill-color: var(--w100) !important;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s !important;
+}
+.dv-sfield:focus { border-bottom-color: var(--gold) !important; }
+.dv-sfield::placeholder { color: var(--w300) !important; opacity: 1 !important; }
+.dv-sfield:-webkit-autofill,
+.dv-sfield:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px var(--bg) inset !important;
+  -webkit-text-fill-color: var(--w100) !important;
+}
+.dv-sicon { position: absolute; left: 0; top: 50%; transform: translateY(-50%); color: var(--w300); font-size: 14px; pointer-events: none; }
+.dv-shint { font-size: 10px; color: var(--w300); letter-spacing: 0.04em; margin-bottom: 14px; }
+.dv-nores { text-align: center; padding: 30px; font-size: 14px; color: var(--w300); display: none; }
+
+/* ══════════════════════════════════════
+   INFO & CREDITS
+══════════════════════════════════════ */
+.dv-icards { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 5px; margin-bottom: 16px; }
+.dv-ic { padding: 10px 12px; background: var(--bg2); border: 0.5px solid var(--border); border-radius: 4px; }
+.dv-ic-lbl { font-size: 8px; letter-spacing: 0.14em; color: var(--gold); margin-bottom: 3px; font-weight: 600; display: block; }
+.dv-ic-val { font-size: 11px; color: var(--w100); line-height: 1.5; }
+.dv-faq { border-bottom: 0.5px solid var(--border); }
+.dv-faq-q {
+  font-size: 13px;
+  color: var(--w200);
+  padding: 14px 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.dv-faq-arr { font-size: 16px; color: var(--w300); flex-shrink: 0; transition: transform 0.2s; display: inline-block; }
+.dv-faq-a { font-size: 12px; color: var(--w100); font-weight: 300; line-height: 1.7; padding: 0 0 14px; display: none; }
+.dv-faq-a.open { display: block; }
+.dv-rlink {
+  display: flex; align-items: center; gap: 10px; padding: 13px 0; border-bottom: 0.5px solid var(--border);
+  font-size: 12px; color: var(--w200); cursor: pointer; text-decoration: none; -webkit-tap-highlight-color: transparent;
+}
+
+.dv-credits-roll { padding: 8px 0 20px; max-width: 480px; margin: 0 auto; }
+.dv-cr-section { margin-bottom: 28px; text-align: center; }
+.dv-cr-role { font-size: 9px; letter-spacing: 0.25em; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+.dv-cr-name { font-size: 15px; font-weight: 300; color: var(--w100); line-height: 1.9; display: block; }
+.dv-cr-name-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 0; }
+.dv-cr-pair-name { font-size: 15px; font-weight: 300; color: var(--w100); line-height: 1.9; text-align: center; }
+.dv-cr-divider { width: 40px; height: 0.5px; background: var(--border); margin: 6px auto 22px; }
+.dv-cr-thanks { font-size: 13px; font-style: italic; color: var(--w200); line-height: 1.9; text-align: center; margin-top: 8px; font-weight: 300; }
+
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+.dv-foot {
+  background: var(--header-bg);
+  padding: 12px 16px calc(12px + var(--safe-bottom));
+  display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #111;
+}
+.dv-foot-l { font-size: 8px; letter-spacing: 0.2em; color: #666; }
+.dv-foot-g { color: var(--gold); }
+.dv-foot-r { font-size: 8px; color: #555; letter-spacing: 0.1em; }
+
+/* ══════════════════════════════════════
+   LIGHTBOX & DESKTOP
+══════════════════════════════════════ */
+.dv-lightbox {
+  position: fixed; inset: 0; background: rgba(8, 4, 16, 0.97); z-index: 9999;
+  display: none; align-items: center; justify-content: center; padding: 16px; touch-action: none;
+}
+.dv-lightbox.open { display: flex; }
+.dv-lb-img { max-width: 100%; max-height: 85vh; object-fit: contain; border-radius: 2px; display: block; user-select: none; }
+.dv-lb-close, .dv-lb-prev, .dv-lb-next {
+  position: absolute; background: rgba(255,255,255,0.1); border: none; color: #fff;
+  border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; touch-action: manipulation;
+}
+.dv-lb-close { top: max(16px, var(--safe-top)); right: 16px; font-size: 24px; width: 40px; height: 40px; }
+.dv-lb-prev, .dv-lb-next { top: 50%; transform: translateY(-50%); font-size: 24px; width: 44px; height: 44px; }
+.dv-lb-prev { left: 12px; } .dv-lb-next { right: 12px; }
+.dv-lb-counter { position: absolute; bottom: max(20px, var(--safe-bottom)); left: 50%; transform: translateX(-50%); font-size: 11px; color: #b8b0a0; letter-spacing: 0.1em; }
+
+@media (min-width: 600px) {
+  body { max-width: 800px; margin: 0 auto; box-shadow: 0 0 60px rgba(0,0,0,0.5); }
+  .dv-cgrid { grid-template-columns: repeat(4, 1fr); }
+  .dv-ptab { font-size: 10px !important; padding: 13px 14px 11px !important; }
+  .dv-stab { padding: 9px 12px 7px !important; }
+  .dv-gal-home { grid-template-rows: 160px 160px; }
+}
+</style>
+</head>
+<body>
+
+<div class="dvh">
+  <div class="dvh-brand">
+    <span class="dvh-dv">DANCE VAULT</span>
+    <span class="dvh-sep">·</span>
+    <span class="dvh-prog">PROGRAMS</span>
+  </div>
+  <div class="dvh-right">
+    <button class="dv-mbtn on" id="mbtn-dark" onclick="setMode('dark')">Dark</button>
+    <button class="dv-mbtn" id="mbtn-light" onclick="setMode('light')">Light</button>
+  </div>
+</div>
+
+<div class="dv-banner">
+  <img src="1056x480-WarmlandDance2026 SHOWCASE.jpg" alt="Warmland Dance 2026 Showcase">
+  <div class="dv-banner-fade"></div>
+</div>
+
+<div class="dv-event">
+  <div>
+    <div class="dv-estudio">WARMLAND DANCE</div>
+    <div class="dv-etitle">2026 Showcase</div>
+    <div class="dv-esub">Sunday, May 31st · 2:00 pm<br>Cowichan Performing Arts Centre · Duncan, BC</div>
+  </div>
+  <div class="dv-event-r">
+    <div><div class="dv-sval">III</div><div class="dv-slbl">ACTS</div></div>
+    <div><div class="dv-sval">54</div><div class="dv-slbl">NUMBERS</div></div>
+  </div>
+</div>
+
+<div class="dv-nav">
+  <div class="dv-nav-row1">
+    <div class="dv-nav-left">
+      <button class="dv-ptab on" id="pt-home" onclick="gp('home')">HOME</button>
+      <button class="dv-ptab" id="pt-acts" onclick="gp('acts')">ACTS</button>
+      <button class="dv-ptab" id="pt-info" onclick="gp('info')">+ INFO</button>
+      <button class="dv-ptab" id="pt-credits" onclick="gp('credits')">CREDITS</button>
+    </div>
+    <div class="dv-nav-right">
+      <button class="dv-srch" id="pt-search" onclick="gp('search')">
+        <svg viewBox="0 0 16 16"><circle cx="6.5" cy="6.5" r="4.5"/><line x1="10" y1="10" x2="14" y2="14"/></svg>
+        SEARCH
+      </button>
+    </div>
+  </div>
+  <div class="dv-nav-row2" id="row2"></div>
+</div>
+
+<div class="dv-panel show" id="p-home">
+  <div class="dv-lbl">WELCOME</div>
+  <div class="dv-wtext">
+    The Warmland Dance 2026 Showcase is a vibrant celebration of movement, artistry, and community. Featuring dancers as young as three years old through to our senior performers, the recital highlights a full season of growth, dedication, and creative expression across a variety of dance styles.
+    <br><br>
+    Audiences can expect an engaging and heartfelt performance that reflects the spirit of Warmland Dance—where dancers belong. Join us for an inspiring afternoon of talent, connection, and celebration.
+  </div>
+
+  <div class="dv-acts-row">
+    <div class="dv-achip" onclick="ga(1)"><div class="dv-achip-sl">/</div><div class="dv-achip-lb">ACT I</div></div>
+    <div class="dv-achip" onclick="ga(2)"><div class="dv-achip-sl">//</div><div class="dv-achip-lb">ACT II</div></div>
+    <div class="dv-achip" onclick="ga(3)"><div class="dv-achip-sl">///</div><div class="dv-achip-lb">ACT III</div></div>
+  </div>
+
+  <div class="dv-lbl">GALLERY</div>
+  <div class="dv-gal-home">
+    <div class="ghi" onclick="openLb(0,'home')"><img src="images/photo1.jpg" alt="Warmland dancers"></div>
+    <div class="ghi" onclick="openLb(1,'home')"><img src="images/photo2.jpg" alt="Warmland dancers"></div>
+    <div class="ghi" onclick="openLb(2,'home')"><img src="images/photo3.jpg" alt="Warmland dancers"></div>
+  </div>
+
+  <div class="dv-lbl" style="margin-top:4px">STUDIO</div>
+  <div class="dv-cgrid">
+    <a class="dv-cc" href="https://www.warmlandance.ca" target="_blank">
+      <div class="dv-cc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div>
+      <div class="dv-cc-lbl">WEBSITE</div>
+      <div class="dv-cc-val">warmlandance.ca</div>
+    </a>
+    <a class="dv-cc" href="mailto:enrollment@warmlandance.ca">
+      <div class="dv-cc-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+      <div class="dv-cc-lbl">EMAIL</div>
+      <div class="dv-cc-val">enrollment@warmlandance.ca</div>
+    </a>
+    <a class="dv-cc" href="https://www.instagram.com/warmlanddance" target="_blank">
+      <div class="dv-cc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+      <div class="dv-cc-lbl">INSTAGRAM</div>
+      <div class="dv-cc-val">@warmlanddance</div>
+    </a>
+    <a class="dv-cc" href="https://www.facebook.com/warmlanddance" target="_blank">
+      <div class="dv-cc-icon"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div>
+      <div class="dv-cc-lbl">FACEBOOK</div>
+      <div class="dv-cc-val">warmlanddance</div>
+    </a>
+  </div>
+</div>
+
+<div class="dv-panel" id="p-acts">
+  <div class="dv-act-body show" id="ab1">
+    <div class="dv-act-hd"><div class="dv-act-sl">/</div><div class="dv-act-nm">ACT ONE</div></div>
+    <div id="r1"></div>
+    <div class="dv-interm">— Intermission · 15 minutes —</div>
+  </div>
+  <div class="dv-act-body" id="ab2">
+    <div class="dv-act-hd"><div class="dv-act-sl">//</div><div class="dv-act-nm">ACT TWO</div></div>
+    <div id="r2"></div>
+    <div class="dv-interm" style="margin-top:16px">— AWARDS —</div>
+    <div class="dv-interm">— Intermission · 15 minutes —</div>
+  </div>
+  <div class="dv-act-body" id="ab3">
+    <div class="dv-act-hd"><div class="dv-act-sl">///</div><div class="dv-act-nm">ACT THREE</div></div>
+    <div id="r3"></div>
+  </div>
+</div>
+
+<div id="p-search" style="display:none">
+  <div class="dv-sfield-wrap">
+    <span class="dv-sicon">⌕</span>
+    <input class="dv-sfield" id="sf" type="search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search title, style, choreographer, dancer…" oninput="ds(this.value)">
+  </div>
+  <div class="dv-shint" id="sh">54 numbers across 3 acts</div>
+  <div id="sr"></div>
+  <div class="dv-nores" id="nr">No results found.</div>
+</div>
+
+<div class="dv-panel" id="p-info">
+  
+  <div id="is-faq">
+    <div class="dv-faq"><div class="dv-faq-q" onclick="fq(this)">When and where is student drop-off? <span class="dv-faq-arr">›</span></div><div class="dv-faq-a">Students may begin arriving at <strong>12:00 PM</strong> (latest 1:00 PM). Please sign in at the check-in table located just outside the stage door in the lobby past the library entrance. <em>Preschool Duckie Dance & Beginner Mermaid Ballet</em> students should arrive at <strong>12:45 PM</strong>.</div></div>
+    <div class="dv-faq"><div class="dv-faq-q" onclick="fq(this)">Are parents allowed backstage? <span class="dv-faq-arr">›</span></div><div class="dv-faq-a">Parents are not permitted backstage unless they are registered Den Parent volunteers.</div></div>
+    <div class="dv-faq"><div class="dv-faq-q" onclick="fq(this)">What are the hair, makeup & costume rules? <span class="dv-faq-arr">›</span></div><div class="dv-faq-a">All dancers should arrive fully dressed with hair and makeup completed. Keep costumes protected in a garment bag or costume suitcase, and ensure all belongings are clearly labelled. If there are multiple costume changes, please send a small labelled container for quick organization.</div></div>
+    <div class="dv-faq"><div class="dv-faq-q" onclick="fq(this)">What should dancers pack for backstage? <span class="dv-faq-arr">›</span></div><div class="dv-faq-a">Please pack a water bottle, clean/non-messy snacks, and quiet activities like colouring books, reading materials, or cards. To help keep areas organized, please label EVERYTHING clearly.</div></div>
+    <div class="dv-faq"><div class="dv-faq-q" onclick="fq(this)">Do dancers need a ticket to watch the show? <span class="dv-faq-arr">›</span></div><div class="dv-faq-a">Dancers performing in the show do not require a ticket and may be brought into the theater to watch with a chaperone. If you would prefer them to sit with you, you must purchase them a ticket, sign them out during intermission, and sign them back in before the finale.</div></div>
+    <div class="dv-faq"><div class="dv-faq-q" onclick="fq(this)">What is the end-of-show pick-up procedure? <span class="dv-faq-arr">›</span></div><div class="dv-faq-a"><strong>Preschool & Beginner Families:</strong> You will be invited directly to the stage area to collect your child.<br><br><strong>All Other Families:</strong> You are asked to wait upstairs in the reception area. Dancers will come upstairs to meet you. Please do NOT wait outside the backstage/stage door.</div></div>
+  </div>
+
+  <div id="is-venue" style="display:none">
+    <div class="dv-icards">
+      <div class="dv-ic"><span class="dv-ic-lbl">LOCATION</span><div class="dv-ic-val">Cowichan Performing Arts Centre<br>2687 James Street, Duncan, BC</div></div>
+      <div class="dv-ic"><span class="dv-ic-lbl">ENTRANCE</span><div class="dv-ic-val">West side of building (look for the giant hockey stick)</div></div>
+      <div class="dv-ic"><span class="dv-ic-lbl">PARKING</span><div class="dv-ic-val">Free parking in front & beside the west entrance</div></div>
+      <div class="dv-ic"><span class="dv-ic-lbl">DIRECTIONS</span><div class="dv-ic-val"><a href="https://cowichanpac.ca/plan-your-visit/getting-here/" target="_blank" style="color:var(--gold); text-decoration:none;">cowichanpac.ca/plan-your-visit ↗</a></div></div>
+    </div>
+  </div>
+
+  <div id="is-resources" style="display:none">
+    <a class="dv-rlink" href="https://youtu.be/VdUX3H5UfUQ?si=d2BVZmPwzKHOpTMf" target="_blank">▶ &nbsp;Stage Makeup — For younger dancers</a>
+    <a class="dv-rlink" href="https://www.youtube.com/watch?v=MxjfLrYeEU0" target="_blank">▶ &nbsp;Stage Makeup — For older dancers</a>
+  </div>
+
+  <div id="is-media" style="display:none">
+    <div class="dv-lbl">MEDIA GALLERY</div>
+    <div class="dv-gal-media">
+      <div class="gmi" onclick="openLb(0,'all')"><img src="images/photo1.jpg" alt="Photo 1"></div>
+      <div class="gmi" onclick="openLb(1,'all')"><img src="images/photo2.jpg" alt="Photo 2"></div>
+      <div class="gmi" onclick="openLb(2,'all')"><img src="images/photo3.jpg" alt="Photo 3"></div>
+      <div class="gmi" onclick="openLb(3,'all')"><img src="images/photo4.jpg" alt="Photo 4"></div>
+      <div class="gmi" onclick="openLb(4,'all')"><img src="images/photo5.jpg" alt="Photo 5"></div>
+      <div class="gmi" onclick="openLb(5,'all')"><img src="images/photo6.jpg" alt="Photo 6"></div>
+    </div>
+  </div>
+</div>
+
+<div class="dv-panel" id="p-credits">
+  <div class="dv-credits-roll">
+    <div class="dv-cr-section"><div class="dv-cr-role">ARTISTIC DIRECTOR</div><span class="dv-cr-name">Leah Burley</span></div>
+    <div class="dv-cr-divider"></div>
+    <div class="dv-cr-section">
+      <div class="dv-cr-role">CHOREOGRAPHERS</div>
+      <div class="dv-cr-name-pair"><span class="dv-cr-pair-name">Leah Burley</span><span class="dv-cr-pair-name">Anna Dickey</span></div>
+      <div class="dv-cr-name-pair"><span class="dv-cr-pair-name">Adriana Digiovanni</span><span class="dv-cr-pair-name">Isadora Digiovanni</span></div>
+      <div class="dv-cr-name-pair"><span class="dv-cr-pair-name">Tatiana Hassan</span><span class="dv-cr-pair-name">Anja King</span></div>
+      <div class="dv-cr-name-pair"><span class="dv-cr-pair-name">Joel MacGregor</span><span class="dv-cr-pair-name">Sarina Sorensen</span></div>
+    </div>
+    <div class="dv-cr-divider"></div>
+    <div class="dv-cr-section"><div class="dv-cr-role">ASSISTANT TEACHERS</div><span class="dv-cr-name">Isadora Digiovanni</span><span class="dv-cr-name">Selina Lampson</span></div>
+    <div class="dv-cr-divider"></div>
+    <div class="dv-cr-section"><div class="dv-cr-role">WARDROBE MASTER</div><span class="dv-cr-name">Jane</span></div>
+    <div class="dv-cr-divider"></div>
+    <div class="dv-cr-section">
+      <div class="dv-cr-role" style="margin-bottom: 2px;">CAST</div>
+      <div class="dv-cr-role" style="margin-top: 0; opacity: 0.8;">MAJOR DANCERS</div>
+      <span class="dv-cr-name">Safire Boyle-Macleod</span><span class="dv-cr-name">Micah Corry</span><span class="dv-cr-name">Isadora Digiovanni</span><span class="dv-cr-name">Airlyn Goddard</span><span class="dv-cr-name">Selina Lampson</span><span class="dv-cr-name">Acadia Lousier-Montan</span><span class="dv-cr-name">Navaya MacGregor</span><span class="dv-cr-name">Faryn Peterson</span><span class="dv-cr-name">Tevah Surm</span><span class="dv-cr-name">Loesje Tillie</span><span class="dv-cr-name">Devin Wiebe</span><span class="dv-cr-name">Molly Williams</span>
+    </div>
+    <div class="dv-cr-divider"></div>
+    <div class="dv-cr-section"><div class="dv-cr-thanks">Special thanks to the venue staff members and all of the dedicated parent volunteers during rehearsals and recital who help make this production possible.</div></div>
+  </div>
+</div>
+
+<div class="dv-foot">
+  <div class="dv-foot-l">Powered by <span class="dv-foot-g">DANCE VAULT</span></div>
+  <div class="dv-foot-r">dancevault.ca</div>
+</div>
+
+<div class="dv-lightbox" id="lb">
+  <button class="dv-lb-close" onclick="closeLb()">×</button>
+  <button class="dv-lb-prev" onclick="lbNav(-1)">‹</button>
+  <img class="dv-lb-img" id="lb-img" src="" alt="">
+  <button class="dv-lb-next" onclick="lbNav(1)">›</button>
+  <div class="dv-lb-counter" id="lb-counter"></div>
+</div>
+
+<script>
+/* ── NAVIGATION ── */
+const ACTS=[{id:'1',l:'ACT ONE'},{id:'2',l:'ACT TWO'},{id:'3',l:'ACT THREE'}];
+const INFO=[{id:'faq',l:'FAQ'},{id:'venue',l:'VENUE'},{id:'resources',l:'RESOURCES'},{id:'media',l:'MEDIA'}];
+let curAct=1, curInfo='faq';
+
+function gp(id){
+  ['home','acts','info','credits'].forEach(p=>document.getElementById('p-'+p).classList.toggle('show',p===id));
+  document.getElementById('p-search').style.display=id==='search'?'block':'none';
+  ['home','acts','info','credits'].forEach(t=>document.getElementById('pt-'+t).classList.toggle('on',t===id));
+  document.getElementById('pt-search').classList.toggle('on',id==='search');
+  const r2=document.getElementById('row2');
+  if(id==='acts'){
+    r2.innerHTML=ACTS.map(t=>`<button class="dv-stab${t.id===String(curAct)?' on':''}" onclick="sa('${t.id}')">${t.l}</button>`).join('');
+    r2.classList.add('show');
+  } else if(id==='info'){
+    r2.innerHTML=INFO.map(t=>`<button class="dv-stab${t.id===curInfo?' on':''}" onclick="si('${t.id}')">${t.l}</button>`).join('');
+    r2.classList.add('show');
+  } else {
+    r2.classList.remove('show'); r2.innerHTML='';
+  }
+  if(id==='search') setTimeout(()=>document.getElementById('sf').focus(),80);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function sa(n){
+  curAct=parseInt(n);
+  [1,2,3].forEach(i=>document.getElementById('ab'+i).classList.toggle('show',i===curAct));
+  document.querySelectorAll('#row2 .dv-stab').forEach((b,i)=>b.classList.toggle('on',i+1===curAct));
+}
+
+function si(id){
+  curInfo=id;
+  ['faq','venue','resources','media'].forEach(s=>document.getElementById('is-'+s).style.display=s===id?'block':'none');
+  document.querySelectorAll('#row2 .dv-stab').forEach(b=>b.classList.toggle('on',b.textContent.trim()===INFO.find(t=>t.id===id)?.l));
+}
+
+function ga(n){ gp('acts'); sa(String(n)); }
+function fq(el){ const a=el.nextElementSibling,ar=el.querySelector('.dv-faq-arr'); a.classList.toggle('open'); ar.style.transform=a.classList.contains('open')?'rotate(90deg)':''; }
+
+/* ── THEME TOGGLE ── */
+function setMode(m){ 
+  document.getElementById('mbtn-dark').classList.toggle('on',m==='dark'); 
+  document.getElementById('mbtn-light').classList.toggle('on',m==='light'); 
+  
+  if (m === 'light') {
+    document.documentElement.classList.add('light-mode');
+  } else {
+    document.documentElement.classList.remove('light-mode');
+  }
+}
+
+/* ── LIGHTBOX ── */
+const HOME_IMGS = ['images/photo1.jpg','images/photo2.jpg','images/photo3.jpg'];
+const ALL_IMGS  = ['images/photo1.jpg','images/photo2.jpg','images/photo3.jpg','images/photo4.jpg','images/photo5.jpg','images/photo6.jpg'];
+let lbSet=[], lbIdx=0;
+
+function openLb(idx, set){
+  lbSet = set==='home' ? HOME_IMGS : ALL_IMGS;
+  lbIdx = idx;
+  document.getElementById('lb-img').src = lbSet[lbIdx];
+  document.getElementById('lb-counter').textContent = `${lbIdx+1} / ${lbSet.length}`;
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLb(){ document.getElementById('lb').classList.remove('open'); document.body.style.overflow=''; }
+function lbNav(dir){
+  lbIdx=(lbIdx+dir+lbSet.length)%lbSet.length;
+  document.getElementById('lb-img').src=lbSet[lbIdx];
+  document.getElementById('lb-counter').textContent=`${lbIdx+1} / ${lbSet.length}`;
+}
+document.getElementById('lb').addEventListener('click',e=>{ if(e.target===document.getElementById('lb')) closeLb(); });
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('lb').classList.contains('open')) return;
+  if(e.key==='Escape') closeLb();
+  if(e.key==='ArrowLeft') lbNav(-1);
+  if(e.key==='ArrowRight') lbNav(1);
+});
+
+let tsX=0;
+document.getElementById('lb').addEventListener('touchstart',e=>{ tsX=e.touches[0].clientX; },{passive:true});
+document.getElementById('lb').addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-tsX;
+  if(Math.abs(dx)>50){ lbNav(dx<0?1:-1); }
+});
+
+/* ── SEARCH ── */
+const N=[
+  {a:1,n:1,t:"Stuck",cl:"Intermediate Jazz · Ages 9–12",ch:"Leah Burley",as:"Anna Dickey"},
+  {a:1,n:2,t:"Dance of Life",cl:"Intermediate Ballet · Ages 12+",ch:"Adriana Digiovanni",as:""},
+  {a:1,n:3,t:"This is Love",cl:"Solo — Navaya MacGregor",ch:"Isadora Digiovanni",as:""},
+  {a:1,n:4,t:"Celebrate the Rain",cl:"Beginner Tap · Ages 6–8",ch:"Tatiana Hassan",as:""},
+  {a:1,n:5,t:"Despacito",cl:"WAA Ballet",ch:"Leah Burley",as:""},
+  {a:1,n:6,t:"Ka-Pow",cl:"Advanced Jazz · Ages 13+",ch:"Leah Burley",as:""},
+  {a:1,n:7,t:"Grow",cl:"Duo — Loesje Tillie & Faryn Peterson",ch:"Anna Dickey",as:""},
+  {a:1,n:8,t:"Die Trying",cl:"Adult Contemporary / Lyrical",ch:"Leah Burley",as:""},
+  {a:1,n:9,t:"Butterfly Waltz",cl:"Beginner Ballet · Ages 9–12",ch:"Tatiana Hassan",as:""},
+  {a:1,n:10,t:"Ocean Eyes",cl:"Solo — Selina Lampson",ch:"Leah Burley",as:""},
+  {a:1,n:11,t:"The Count",cl:"Duo — Safire Boyle-Macleod & Micah Corry",ch:"Anna Dickey",as:""},
+  {a:1,n:12,t:"Bigger Than Love",cl:"Beginner Contemporary / Lyrical",ch:"Adriana Digiovanni",as:""},
+  {a:1,n:13,t:"The Turning Point",cl:"Solo — Isadora Digiovanni",ch:"Adriana Digiovanni",as:""},
+  {a:1,n:14,t:"Feel It Still",cl:"Beginner Jazz · Ages 9–12",ch:"Tatiana Hassan",as:""},
+  {a:1,n:15,t:"Just Keep Watching",cl:"Senior Hip Hop",ch:"Anna Dickey",as:""},
+  {a:1,n:16,t:"Alive",cl:"Movement Arts + Aerial Silks",ch:"Tatiana Hassan / Joel / Anja King",as:""},
+  {a:1,n:17,t:"Don't Wake Me Up",cl:"Solo — Devin Wiebe",ch:"Adriana Digiovanni",as:""},
+  {a:1,n:18,t:"Samba Tap",cl:"Tap Company",ch:"Adriana Digiovanni",as:""},
+  {a:2,n:1,t:"Iron",cl:"Intermediate Contemporary · Ages 12+",ch:"Leah Burley",as:"Anna Dickey"},
+  {a:2,n:2,t:"Eclipse",cl:"Advanced Ballet · Ages 13+",ch:"Adriana Digiovanni",as:""},
+  {a:2,n:3,t:"Trendsetter",cl:"Junior Hip Hop",ch:"Anna Dickey",as:""},
+  {a:2,n:4,t:"The Duck Dance",cl:"Preschool Ballet",ch:"Leah Burley",as:"Selina Lampson"},
+  {a:2,n:5,t:"Get There",cl:"Adult Tap",ch:"Adriana Digiovanni",as:""},
+  {a:2,n:6,t:"Tick Tick Boom",cl:"WAA Jazz",ch:"WAA Students",as:""},
+  {a:2,n:7,t:"Dreamer",cl:"Solo — Loesje Tillie",ch:"Leah Burley",as:""},
+  {a:2,n:8,t:"Celestial Drift",cl:"Pointe — Isadora & Molly Williams",ch:"Adriana Digiovanni",as:""},
+  {a:2,n:9,t:"Back to School",cl:"WAA Tap",ch:"Adriana Digiovanni",as:""},
+  {a:2,n:10,t:"Across the Universe",cl:"Solo — Tevah Surm",ch:"Leah Burley",as:""},
+  {a:2,n:11,t:"Together Again",cl:"Pre Company",ch:"Leah Burley",as:""},
+  {a:2,n:12,t:"Keep On Dancing",cl:"Solo — Airlyn Goddard",ch:"Leah Burley",as:""},
+  {a:2,n:13,t:"Earned It",cl:"Intermediate Jazz · Ages 13+",ch:"Adriana Digiovanni",as:""},
+  {a:2,n:14,t:"Fatal",cl:"Beg/Int Jazz · Ages 12+",ch:"Adriana Digiovanni",as:""},
+  {a:2,n:15,t:"Ordinary",cl:"Acro · Ages 9–12",ch:"Tatiana Hassan",as:""},
+  {a:2,n:16,t:"Scientist",cl:"Senior Company",ch:"Leah Burley",as:""},
+  {a:2,n:17,t:"One Day",cl:"Beg. Int. Ballet · Ages 7–9",ch:"Adriana Digiovanni",as:"Isadora Digiovanni"},
+  {a:2,n:18,t:"Happiness Does Not Wait",cl:"All Companies",ch:"Anna Dickey",as:""},
+  {a:3,n:1,t:"End of the Road",cl:"Senior / Novice Companies",ch:"Leah Burley",as:""},
+  {a:3,n:2,t:"Into Your Heart",cl:"Junior Company",ch:"Adriana Digiovanni",as:"Isadora Digiovanni"},
+  {a:3,n:3,t:"Disco Snails",cl:"Beg. Int. Jazz · Ages 7–9",ch:"Leah Burley",as:"Selina Lampson"},
+  {a:3,n:4,t:"Tap, Bass and Drums",cl:"Duo — Isadora & Acadia Lousier-Montan",ch:"Adriana Digiovanni",as:""},
+  {a:3,n:5,t:"Bliss",cl:"Intermediate Ballet · Ages 9–12",ch:"Adriana Digiovanni",as:"Isadora Digiovanni"},
+  {a:3,n:6,t:"Flatline",cl:"Solo — Safire Boyle-Macleod",ch:"Anna Dickey",as:""},
+  {a:3,n:7,t:"Jitterbug / Wizard of Oz",cl:"Musical Theatre Production",ch:"Sarina Sorensen",as:""},
+  {a:3,n:8,t:"Pathways to Truth",cl:"Senior Company",ch:"Anna Dickey",as:""},
+  {a:3,n:9,t:"Within",cl:"WAA Contemporary / Lyrical",ch:"Leah Burley",as:""},
+  {a:3,n:10,t:"Moonlight Mermaids",cl:"Beginner Ballet · Ages 6–8",ch:"Leah Burley",as:"Selina Lampson"},
+  {a:3,n:11,t:"Shadow of Mine",cl:"Int. Contemporary · Ages 9+",ch:"Isadora Digiovanni",as:""},
+  {a:3,n:12,t:"La Corrida",cl:"Adult Jazz",ch:"Adriana Digiovanni",as:""},
+  {a:3,n:13,t:"Human",cl:"Novice Company",ch:"Adriana Digiovanni",as:""},
+  {a:3,n:14,t:"Revolt",cl:"Solo — Isadora Digiovanni",ch:"Anna Dickey",as:""},
+  {a:3,n:15,t:"Rockin Robin",cl:"Beg. Int. Tap · Ages 7–9",ch:"Adriana Digiovanni",as:"Isadora Digiovanni"},
+  {a:3,n:16,t:"Off the Radar",cl:"Junior Company",ch:"Leah Burley",as:"Anna Dickey"},
+  {a:3,n:17,t:"Think Later",cl:"Hip Hop Company",ch:"Anna Dickey",as:""},
+  {a:3,n:18,t:"Finale",cl:"All Dancers",ch:"Warmland Dance",as:""},
+];
+
+function hi(t,q){
+  if(!q||!t) return t||'';
+  return t.replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'),'<mark>$1</mark>');
+}
+
+function rh(d,q,showAct){
+  return `<div class="dv-row">
+    <div class="dv-rnum">${hi(String(d.n).padStart(2,'0'),q)}</div>
+    <div class="dv-row-body">
+      <div class="dv-row-left">
+        <div class="dv-rtitle">${hi(d.t,q)}</div>
+        <div class="dv-rclass">${hi(d.cl,q)}${showAct?' · Act '+d.a:''}</div>
+      </div>
+      <div class="dv-row-right">
+        <div class="dv-rchore">${hi(d.ch,q)}</div>
+        ${d.as?`<div class="dv-rasst">asst. ${hi(d.as,q)}</div>`:''}
+      </div>
+    </div>
+  </div>`;
+}
+
+function ra(){
+  [1,2,3].forEach(a=>{
+    document.getElementById('r'+a).innerHTML=N.filter(d=>d.a===a).map(d=>rh(d,'',false)).join('');
+  });
+}
+
+function ds(q){
+  const v=q.trim().toLowerCase();
+  const sh=document.getElementById('sh');
+  const nr=document.getElementById('nr');
+  const sr=document.getElementById('sr');
+  if(!v){ sr.innerHTML=''; nr.style.display='none'; sh.textContent='54 numbers across 3 acts'; return; }
+  const m=N.filter(d=>[d.t,d.cl,d.ch,d.as,'act '+d.a].join(' ').toLowerCase().includes(v));
+  sh.textContent=`${m.length} result${m.length!==1?'s':''} for "${q}"`;
+  nr.style.display=m.length?'none':'block';
+  sr.innerHTML=m.map(d=>rh(d,v,true)).join('');
+}
+
+ra();
+</script>
+</body>
+</html>
