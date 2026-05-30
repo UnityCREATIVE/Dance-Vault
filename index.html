@@ -299,31 +299,50 @@ body {
 .dv-achip-lb { font-size: 9px; letter-spacing: 0.12em; color: var(--w200); font-weight: 500; }
 
 /* ══════════════════════════════════════
-   GALLERY
+   GALLERY (SCROLLING & GRID)
 ══════════════════════════════════════ */
-.dv-gal-home {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: clamp(110px, 25vw, 160px) clamp(110px, 25vw, 160px);
-  gap: 3px;
+.dv-scroll-container {
+  width: 100%;
+  height: clamp(160px, 35vw, 240px);
+  overflow: hidden;
   margin-bottom: 22px;
+  position: relative;
+}
+.dv-scroll-track {
+  display: flex;
+  gap: 6px;
+  height: 100%;
+  width: max-content;
+  animation: scrollTrack 25s linear infinite;
+}
+.dv-scroll-track:hover {
+  animation-play-state: paused;
+}
+@keyframes scrollTrack {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } 
+}
+.dv-scroll-item {
+  height: 100%;
+  background: var(--bg3);
   border-radius: 4px;
   overflow: hidden;
-}
-.dv-gal-home .ghi:first-child { grid-row: 1 / 3; }
-.ghi, .gmi {
-  overflow: hidden;
   cursor: pointer;
-  position: relative;
-  background: var(--bg3);
+  flex-shrink: 0;
   -webkit-tap-highlight-color: transparent;
 }
-.ghi img, .gmi img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s; }
-.ghi:active img, .gmi:active img { transform: scale(1.04); }
+.dv-scroll-item img {
+  height: 100%;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  display: block;
+}
 
 .dv-gal-media { columns: 2; gap: 3px; margin-bottom: 8px; }
-.gmi { break-inside: avoid; margin-bottom: 3px; border-radius: 2px; }
-
+.gmi { break-inside: avoid; margin-bottom: 3px; border-radius: 2px; overflow: hidden; cursor: pointer; background: var(--bg3); -webkit-tap-highlight-color: transparent; }
+.gmi img { width: 100%; display: block; transition: transform 0.3s; }
+.gmi:active img { transform: scale(1.04); }
 /* ══════════════════════════════════════
    STUDIO CONTACT GRID
 ══════════════════════════════════════ */
