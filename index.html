@@ -868,12 +868,11 @@ function setMode(m){
 }
 
 /* ── LIGHTBOX ── */
-const HOME_IMGS = ['media/photo1.jpg','media/photo2.jpg','media/photo3.jpg'];
-const ALL_IMGS  = ['media/photo1.jpg','media/photo2.jpg','media/photo3.jpg','media/photo4.jpg','media/photo5.jpg','media/photo6.jpg'];
+const ALL_IMGS  = ['images/photo1.jpg','images/photo2.jpg','images/photo3.jpg','images/photo4.jpg','images/photo5.jpg','images/photo6.jpg'];
 let lbSet=[], lbIdx=0;
 
 function openLb(idx, set){
-  lbSet = set==='home' ? HOME_IMGS : ALL_IMGS;
+  lbSet = ALL_IMGS;
   lbIdx = idx;
   document.getElementById('lb-img').src = lbSet[lbIdx];
   document.getElementById('lb-counter').textContent = `${lbIdx+1} / ${lbSet.length}`;
